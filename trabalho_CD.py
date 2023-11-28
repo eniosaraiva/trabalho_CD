@@ -8,7 +8,6 @@
 import basedosdados as bd
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 import seaborn as sns
 import zipfile
 import urllib.request
@@ -83,7 +82,7 @@ plt.xlabel('Ano')
 plt.ylabel('Área Desmatada (km²)')
 plt.title('Evolução do Desmatamento por Bioma')
 plt.legend()
-plt.savefig('evolucao_desmatamento.png')
+#plt.savefig('evolucao_desmatamento.png')
 plt.show()
 
 df_agrupado = df_relevante.groupby(['ano', 'sigla_uf']).sum().reset_index()
@@ -98,7 +97,7 @@ plt.xlabel('Ano')
 plt.ylabel('Área Desmatada (km²)')
 plt.title('Evolução do Desmatamento por UF')
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left')
-plt.savefig('evolucao_desmatamento.png', bbox_inches='tight')
+#plt.savefig('evolucao_desmatamento.png', bbox_inches='tight')
 plt.show()
 
 desmatamento_por_bioma = df3.groupby('bioma')['desmatado'].sum()
@@ -108,13 +107,13 @@ plt.tight_layout()
 for i, valor in enumerate(desmatamento_por_bioma):
     plt.annotate(f'{valor:.2f}', (i, valor), ha='center', va='bottom')
 
-plt.savefig('desmatamento_por_bioma.png', dpi = 300)
+#plt.savefig('desmatamento_por_bioma.png', dpi = 300)
 plt.show()
 
 tendencias_temporais = df3.groupby('ano')['desmatado'].sum()
 tendencias_temporais.plot(kind='line', xlabel='Ano', ylabel='Área Desmatada (km²)')
 plt.title('Tendências Temporais de Desmatamento')
-plt.savefig('tendencia_geral.png')
+#plt.savefig('tendencia_geral.png')
 plt.show()
 
 correlacoes = df3.corr()
@@ -122,7 +121,7 @@ fig, ax = plt.subplots(figsize=(10, 8))
 sns.heatmap(correlacoes, annot=True, cmap='coolwarm', ax=ax)
 plt.title('Correlações entre as Variáveis')
 plt.tight_layout()
-plt.savefig('correlacoes.png', dpi=300)
+#plt.savefig('correlacoes.png', dpi=300)
 plt.show()
 
 df_2022 = df3[df3['ano'] == 2022]
@@ -140,5 +139,5 @@ plt.xlabel('Sigla UF')
 plt.ylabel('Distância')
 plt.xticks(rotation=90)
 plt.tight_layout()
-plt.savefig('dendrograma.png')
+#plt.savefig('dendrograma.png')
 plt.show()
